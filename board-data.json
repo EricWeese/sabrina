@@ -1,0 +1,12 @@
+{
+  "stationName": "MARTA — Peachtree Center",
+  "alert": "Masks are optional. Please stand behind the yellow line.",
+  "northbound": [
+    { "line": "Red", "destination": "North Springs", "minutes": 3 },
+    { "line": "Gold", "destination": "Doraville", "minutes": 7 }
+  ],
+  "southbound": [
+    { "line": "Red", "destination": "Airport", "minutes": 5 },
+    { "line": "Gold", "destination": "Airport", "minutes": 11 }
+  ]
+}

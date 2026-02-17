@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MARTA Board Admin</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="admin-page">
+    <main class="admin">
+      <h1>Board Data Generator</h1>
+      <p>
+        Edit values, then click <strong>Apply</strong> to instantly update the board on this device.
+        (It stores data in browser local storage.)
+      </p>
+
+      <form id="admin-form" class="admin-form"></form>
+
+      <div class="admin-actions">
+        <button id="apply-btn" type="button">Apply</button>
+        <button id="reset-btn" type="button">Reset to board-data.json</button>
+      </div>
+
+      <h2>JSON output</h2>
+      <textarea id="json-output" rows="20" spellcheck="false"></textarea>
+      <button id="copy-btn" type="button">Copy JSON</button>
+    </main>
+
+    <script src="admin.js" type="module"></script>
+  </body>
+</html>

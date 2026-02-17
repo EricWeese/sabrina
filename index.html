@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MARTA Board</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="board">
+      <header class="board__header">
+        <h1 id="station-name">MARTA — Peachtree Center</h1>
+        <div id="clock" class="clock"></div>
+      </header>
+
+      <section class="column">
+        <h2>NORTHBOUND</h2>
+        <div id="northbound" class="arrivals"></div>
+      </section>
+
+      <section class="column">
+        <h2>SOUTHBOUND</h2>
+        <div id="southbound" class="arrivals"></div>
+      </section>
+
+      <footer class="ticker-wrap">
+        <div id="alert" class="ticker"></div>
+      </footer>
+    </main>
+
+    <script src="app.js" type="module"></script>
+  </body>
+</html>
