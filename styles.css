@@ -1,0 +1,153 @@
+:root {
+  color-scheme: dark;
+  --bg: #050505;
+  --panel: #121212;
+  --line-red: #d82d2d;
+  --line-gold: #e0b420;
+  --text-main: #f5f5f5;
+  --text-subtle: #b7b7b7;
+  --accent: #2ac3ff;
+  font-family: "Inter", "Segoe UI", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text-main);
+}
+
+.board {
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr 1fr auto;
+  gap: 1rem;
+  padding: 1.25rem;
+}
+
+.board__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  border-bottom: 1px solid #2a2a2a;
+  padding-bottom: 0.5rem;
+}
+
+h1,
+h2 {
+  margin: 0;
+}
+
+h2 {
+  color: var(--text-subtle);
+  letter-spacing: 0.05em;
+}
+
+.clock {
+  font-size: 1.7rem;
+  color: var(--accent);
+}
+
+.arrivals {
+  margin-top: 0.8rem;
+  display: grid;
+  gap: 0.6rem;
+}
+
+.arrival {
+  display: grid;
+  grid-template-columns: 130px 1fr auto;
+  align-items: center;
+  gap: 0.75rem;
+  background: var(--panel);
+  border-radius: 0.4rem;
+  padding: 0.9rem;
+  font-size: 1.5rem;
+}
+
+.badge {
+  text-transform: uppercase;
+  font-weight: 700;
+  border-radius: 0.25rem;
+  color: #111;
+  padding: 0.3rem 0.5rem;
+  text-align: center;
+}
+
+.badge--red {
+  background: var(--line-red);
+}
+
+.badge--gold {
+  background: var(--line-gold);
+}
+
+.min {
+  font-weight: 700;
+  font-size: 2rem;
+}
+
+.ticker-wrap {
+  overflow: hidden;
+  white-space: nowrap;
+  border-top: 1px solid #2a2a2a;
+  padding-top: 0.6rem;
+}
+
+.ticker {
+  display: inline-block;
+  animation: slide 18s linear infinite;
+  color: var(--accent);
+  font-size: 1.3rem;
+}
+
+@keyframes slide {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+.admin-page {
+  padding: 2rem;
+}
+
+.admin {
+  max-width: 900px;
+  margin: auto;
+}
+
+.admin-form {
+  display: grid;
+  gap: 1rem;
+}
+
+.fieldset {
+  border: 1px solid #2a2a2a;
+  padding: 1rem;
+}
+
+label {
+  display: grid;
+  gap: 0.35rem;
+  margin: 0.35rem 0;
+}
+
+input,
+textarea,
+button {
+  background: #161616;
+  color: var(--text-main);
+  border: 1px solid #2a2a2a;
+  border-radius: 0.35rem;
+  padding: 0.5rem;
+}
+
+button {
+  cursor: pointer;
+}
