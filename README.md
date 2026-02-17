@@ -24,10 +24,10 @@ Your live URL will look like:
 ## Update board content
 
 1. Open `/admin.html` in your browser.
-2. Edit values and click **Copy JSON**.
-3. Open `board-data.json` in GitHub web editor.
-4. Paste JSON and commit.
-5. The kiosk page refreshes every 30s.
+2. Edit values and click **Apply**.
+3. The display page updates instantly on this device (stored in browser local storage).
+4. Optional: use **Copy JSON** if you still want to commit updates to `board-data.json`.
+5. The kiosk page still refreshes every 30s as a fallback.
 
 ## Raspberry Pi kiosk setup
 

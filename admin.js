@@ -1,8 +1,13 @@
 const form = document.getElementById("admin-form");
 const output = document.getElementById("json-output");
 const copyBtn = document.getElementById("copy-btn");
+const applyBtn = document.getElementById("apply-btn");
+const resetBtn = document.getElementById("reset-btn");
+const STORAGE_KEY = "marta-board-data";
 
-const initialData = await fetch("./board-data.json").then((r) => r.json());
+const baseData = await fetch("./board-data.json", { cache: "no-store" }).then((r) => r.json());
+const storedData = localStorage.getItem(STORAGE_KEY);
+const initialData = storedData ? JSON.parse(storedData) : baseData;
 
 function field(label, name, value) {
   return `
@@ -50,18 +55,34 @@ function collect(prefix) {
   return trains;
 }
 
-function refreshJson() {
-  const data = {
+function currentData() {
+  return {
     stationName: form.elements.stationName.value,
     alert: form.elements.alert.value,
     northbound: collect("northbound"),
     southbound: collect("southbound")
   };
-  output.value = JSON.stringify(data, null, 2);
+}
+
+function refreshJson() {
+  output.value = JSON.stringify(currentData(), null, 2);
 }
 
 form.addEventListener("input", refreshJson);
 refreshJson();
+
+applyBtn.addEventListener("click", () => {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(currentData()));
+  applyBtn.textContent = "Applied";
+  setTimeout(() => {
+    applyBtn.textContent = "Apply";
+  }, 1200);
+});
+
+resetBtn.addEventListener("click", () => {
+  localStorage.removeItem(STORAGE_KEY);
+  location.reload();
+});
 
 copyBtn.addEventListener("click", async () => {
   await navigator.clipboard.writeText(output.value);

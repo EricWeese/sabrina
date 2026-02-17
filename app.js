@@ -3,6 +3,7 @@ const southboundEl = document.getElementById("southbound");
 const alertEl = document.getElementById("alert");
 const stationEl = document.getElementById("station-name");
 const clockEl = document.getElementById("clock");
+const STORAGE_KEY = "marta-board-data";
 
 function badgeClass(line) {
   return String(line).toLowerCase().includes("gold") ? "badge--gold" : "badge--red";
@@ -25,6 +26,11 @@ function renderDirection(target, trains) {
 }
 
 async function loadData() {
+  const stored = localStorage.getItem(STORAGE_KEY);
+  if (stored) {
+    return JSON.parse(stored);
+  }
+
   const response = await fetch("./board-data.json", { cache: "no-store" });
   if (!response.ok) {
     throw new Error(`Failed to load board data (${response.status})`);
@@ -44,6 +50,12 @@ async function render() {
   renderDirection(northboundEl, data.northbound);
   renderDirection(southboundEl, data.southbound);
 }
+
+window.addEventListener("storage", (event) => {
+  if (event.key === STORAGE_KEY) {
+    render();
+  }
+});
 
 updateClock();
 setInterval(updateClock, 1000);
